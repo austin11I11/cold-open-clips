@@ -8,25 +8,23 @@
 <meta property="og:title" content="Cold Open Clips">
 <meta property="og:description" content="Each podcast episode turned into 8 captioned vertical clips that open on their best line. First 8 clips free.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#0b2545">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b2545'/%3E%3Cpath d='M24 19v26l21-13z' fill='%238ec5ff' stroke='%238ec5ff' stroke-width='3' stroke-linejoin='round'/%3E%3Ccircle cx='46' cy='18' r='5' fill='%23f8cd05'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#f6f0e4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a1714'/%3E%3Cpath d='M24 19v26l21-13z' fill='%23f6f0e4' stroke='%23f6f0e4' stroke-width='3' stroke-linejoin='round'/%3E%3Ccircle cx='46' cy='18' r='5' fill='%23e2793f'/%3E%3C/svg%3E">
 <style>
   :root {
-    /* Brand: navy and light blue, with gold as the small contrasting color */
-    --navy: #0b2545;
-    --navy-2: #13315c;
-    --navy-line: #24477a;
-    --navy-deep: #081a33;
-    --ice: #eaf4ff;
-    --ice-2: #dcebfc;
-    --sky: #8ec5ff;
-    --sky-line: #c4dcf7;
-    --blue: #1d5fbf;
-    --gold: #f8cd05;
-    --ink: #0b2545;
-    --ink-muted: #46607f;
-    --on-navy: #f5f9ff;
-    --on-navy-muted: #a7bedd;
+    /* Brand: cream and ink black, with burnt orange as the accent */
+    --cream: #f6f0e4;
+    --paper: #fbf8f2;
+    --line: #e1d5c1;
+    --ink: #1a1714;
+    --ink-2: #26221e;
+    --ink-line: #3b352e;
+    --ink-deep: #120f0d;
+    --ink-muted: #5e554b;
+    --on-ink: #f6f0e4;
+    --on-ink-muted: #bdb3a4;
+    --orange: #b04c17;
+    --ember: #e2793f;
     --radius: 18px;
     --wrap: 1080px;
   }
@@ -34,7 +32,7 @@
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    background: var(--ice);
+    background: var(--cream);
     color: var(--ink);
     font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -46,24 +44,24 @@
   h2 { font-size: clamp(1.7rem, 4.6vw, 2.6rem); }
   h3 { font-size: 1.2rem; letter-spacing: -0.01em; }
   p { margin: 0; }
-  .eyebrow {
+  .eyebrow, .section-head .eyebrow, .about .eyebrow {
     font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--blue); margin-bottom: 14px;
+    color: var(--orange); margin-bottom: 14px;
   }
 
-  /* Navy sections */
-  .dark { background: var(--navy); color: var(--on-navy); }
-  .dark .eyebrow { color: var(--sky); }
+  /* Ink sections */
+  .dark { background: var(--ink); color: var(--on-ink); }
+  .dark .eyebrow { color: var(--ember); }
 
   /* Header */
   header.top {
     position: sticky; top: 0; z-index: 10;
-    background: rgba(234, 244, 255, 0.92);
+    background: rgba(246, 240, 228, 0.92);
     -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--sky-line);
+    border-bottom: 1px solid var(--line);
   }
   header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
-  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; letter-spacing: 0.02em; color: var(--navy); }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; letter-spacing: 0.02em; color: var(--ink); }
   .brand svg { width: 30px; height: 30px; flex: none; }
   .brand span { font-size: 0.92rem; text-transform: uppercase; white-space: nowrap; }
   header.top .btn { white-space: nowrap; }
@@ -72,34 +70,37 @@
   /* Buttons */
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    background: var(--gold); color: var(--navy);
-    border: 1px solid rgba(11, 37, 69, 0.14);
+    background: var(--orange); color: var(--cream);
+    border: 1px solid rgba(26, 23, 20, 0.12);
     font-weight: 800; text-decoration: none;
     padding: 15px 26px; border-radius: 999px; min-height: 52px;
     transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
-  .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 26px rgba(248, 205, 5, 0.35); }
-  a:focus-visible, video:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
-  .dark a:focus-visible, .dark video:focus-visible { outline-color: #fff; }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 26px rgba(176, 76, 23, 0.28); }
+  .dark .btn { background: var(--ember); color: var(--ink); }
+  .dark .btn:hover { box-shadow: 0 10px 26px rgba(226, 121, 63, 0.3); }
+  a:focus-visible, video:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .dark a:focus-visible, .dark video:focus-visible, .phone video:focus-visible { outline-color: var(--cream); }
   .btn.small { padding: 9px 18px; min-height: 40px; font-size: 0.92rem; }
 
   /* Hero */
   .hero {
     padding: 64px 0 52px;
-    background: radial-gradient(900px 480px at 85% 0%, rgba(142, 197, 255, 0.2), transparent 70%), var(--navy);
+    background: radial-gradient(900px 480px at 85% 0%, rgba(226, 121, 63, 0.16), transparent 70%), var(--cream);
   }
   .hero .wrap { display: grid; gap: 44px; align-items: center; }
-  .hero h1 { color: #fff; }
-  .hero h1 em { font-style: normal; color: var(--gold); }
-  .hero .lede { font-size: 1.18rem; color: var(--on-navy-muted); max-width: 34em; margin: 22px 0 30px; }
-  .hero .cta-note { margin-top: 14px; font-size: 0.92rem; color: var(--on-navy-muted); }
+  .hero h1 em { font-style: normal; color: var(--orange); }
+  .hero .lede { font-size: 1.18rem; color: var(--ink-muted); max-width: 34em; margin: 22px 0 30px; }
+  .hero .cta-note { margin-top: 14px; font-size: 0.92rem; color: var(--ink-muted); }
   .phone {
     width: min(100%, 300px); margin: 0 auto;
-    border-radius: 34px; padding: 9px; background: var(--navy-2); border: 1px solid var(--navy-line);
-    box-shadow: 0 30px 80px rgba(3, 12, 26, 0.55);
+    border-radius: 34px; padding: 9px; background: var(--ink); border: 1px solid var(--ink-line);
+    box-shadow: 0 30px 70px rgba(26, 23, 20, 0.3);
   }
   .phone video { border-radius: 26px; }
   .phone figcaption { text-align: center; padding: 10px 6px 4px; }
+  .phone .tag { background: var(--ink-2); color: var(--ember); border: 1px solid var(--ink-line); }
+  .phone .show { color: var(--on-ink); }
   video { display: block; width: 100%; aspect-ratio: 9 / 16; background: #000; object-fit: cover; }
   figure { margin: 0; }
   @media (min-width: 860px) {
@@ -109,7 +110,7 @@
 
   /* Sections */
   section { padding: 64px 0; }
-  section.tint { background: var(--ice-2); }
+  section.paper { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .section-head { max-width: 40em; margin-bottom: 34px; }
   .section-head p { color: var(--ink-muted); margin-top: 14px; }
 
@@ -119,22 +120,20 @@
     grid-auto-flow: column; grid-auto-columns: min(72vw, 270px);
     overflow-x: auto; scroll-snap-type: x mandatory;
     padding: 4px 20px 18px; margin: 0 -20px;
-    scrollbar-width: thin; scrollbar-color: var(--sky-line) transparent;
+    scrollbar-width: thin; scrollbar-color: var(--line) transparent;
   }
   .sample {
     scroll-snap-align: center;
-    background: #fff; border: 1px solid var(--sky-line); border-radius: var(--radius);
-    overflow: hidden; box-shadow: 0 10px 30px rgba(11, 37, 69, 0.08);
+    background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; box-shadow: 0 10px 30px rgba(26, 23, 20, 0.07);
   }
   .sample figcaption, .phone figcaption { font-size: 0.86rem; line-height: 1.35; }
   .sample figcaption { padding: 12px 14px 14px; }
   .tag {
     display: inline-block; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--sky); background: var(--navy); border-radius: 6px; padding: 3px 7px; margin-bottom: 6px;
+    color: var(--cream); background: var(--ink); border-radius: 6px; padding: 3px 7px; margin-bottom: 6px;
   }
-  .dark .tag { background: var(--navy); border: 1px solid var(--navy-line); }
   .show { display: block; font-weight: 700; color: var(--ink); }
-  .dark .show { color: var(--on-navy); }
   .swipe { font-size: 0.86rem; color: var(--ink-muted); margin-top: 4px; }
   @media (min-width: 860px) {
     .samples { grid-auto-flow: row; grid-template-columns: repeat(5, 1fr); overflow: visible; margin: 0; padding: 0; }
@@ -142,46 +141,46 @@
   }
   .disclaimer {
     margin-top: 26px; font-size: 0.88rem; color: var(--ink-muted);
-    border-left: 3px solid var(--sky); padding-left: 14px; max-width: 52em;
+    border-left: 3px solid var(--orange); padding-left: 14px; max-width: 52em;
   }
 
   /* Steps */
   .steps { display: grid; gap: 16px; counter-reset: step; list-style: none; margin: 0; padding: 0; }
   .steps li {
     counter-increment: step;
-    background: #fff; border: 1px solid var(--sky-line); border-radius: var(--radius); padding: 26px 24px;
-    box-shadow: 0 10px 30px rgba(11, 37, 69, 0.06);
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 24px;
+    box-shadow: 0 10px 30px rgba(26, 23, 20, 0.05);
   }
   .steps li::before {
     content: counter(step);
     display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
-    background: var(--navy); color: var(--gold); font-weight: 800; margin-bottom: 16px;
+    background: var(--orange); color: var(--cream); font-weight: 800; margin-bottom: 16px;
   }
   .steps p { color: var(--ink-muted); margin-top: 8px; }
   @media (min-width: 860px) { .steps { grid-template-columns: repeat(3, 1fr); } }
 
   /* Offer */
   .offer {
-    background: var(--navy-2); border: 1px solid var(--navy-line); border-radius: 26px;
+    background: var(--ink-2); border: 1px solid var(--ink-line); border-radius: 26px;
     padding: 34px 24px; display: grid; gap: 30px;
   }
   .offer .price-row { display: grid; gap: 14px; }
   .offer .left { display: grid; gap: 26px; }
   .price {
-    border: 1px solid var(--navy-line); border-radius: var(--radius); padding: 20px;
-    background: rgba(11, 37, 69, 0.45);
+    border: 1px solid var(--ink-line); border-radius: var(--radius); padding: 20px;
+    background: rgba(26, 23, 20, 0.5);
   }
-  .price.first { border-color: var(--gold); }
-  .price.first p.label { color: var(--gold); }
-  .price p { color: var(--on-navy-muted); margin-top: 8px; font-size: 0.96rem; }
-  .price p.big { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; color: var(--on-navy); margin-top: 0; }
-  .price p.big .per { font-size: 1rem; font-weight: 600; color: var(--on-navy-muted); }
-  .price p.label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky); margin: 0 0 8px; }
+  .price.first { border-color: var(--ember); }
+  .price p { color: var(--on-ink-muted); margin-top: 8px; font-size: 0.96rem; }
+  .price p.big { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; color: var(--on-ink); margin-top: 0; }
+  .price p.big .per { font-size: 1rem; font-weight: 600; color: var(--on-ink-muted); }
+  .price p.label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-ink-muted); margin: 0 0 8px; }
+  .price.first p.label { color: var(--ember); }
   .ticks { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
   .ticks li { padding-left: 30px; position: relative; }
   .ticks li::before {
     content: ""; position: absolute; left: 2px; top: 0.42em; width: 14px; height: 8px;
-    border-left: 3px solid var(--sky); border-bottom: 3px solid var(--sky); transform: rotate(-45deg);
+    border-left: 3px solid var(--ember); border-bottom: 3px solid var(--ember); transform: rotate(-45deg);
   }
   @media (min-width: 860px) {
     .offer { padding: 48px; grid-template-columns: 1fr 1fr; align-items: start; }
@@ -197,10 +196,10 @@
 
   /* Final CTA */
   .final { text-align: center; padding: 80px 0; }
-  .final h2 { color: #fff; }
-  .final p { color: var(--on-navy-muted); margin: 16px auto 30px; max-width: 32em; }
+  .final h2 { color: var(--on-ink); }
+  .final p { color: var(--on-ink-muted); margin: 16px auto 30px; max-width: 32em; }
 
-  footer { background: var(--navy-deep); color: var(--on-navy-muted); border-top: 1px solid var(--navy-line); padding: 28px 0 44px; font-size: 0.84rem; }
+  footer { background: var(--ink-deep); color: var(--on-ink-muted); border-top: 1px solid var(--ink-line); padding: 28px 0 44px; font-size: 0.84rem; }
   footer p + p { margin-top: 8px; }
 </style>
 </head>
@@ -209,7 +208,7 @@
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Cold Open Clips, back to top">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0b2545"/><path d="M24 19v26l21-13z" fill="#8ec5ff" stroke="#8ec5ff" stroke-width="3" stroke-linejoin="round"/><circle cx="46" cy="18" r="5" fill="#f8cd05"/></svg>
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1a1714"/><path d="M24 19v26l21-13z" fill="#f6f0e4" stroke="#f6f0e4" stroke-width="3" stroke-linejoin="round"/><circle cx="46" cy="18" r="5" fill="#e2793f"/></svg>
       <span>Cold Open Clips</span>
     </a>
     <a class="btn small" href="mailto:austinwu478@gmail.com?subject=8%20free%20clips%20from%20my%20next%20episode">Get 8 free clips</a>
@@ -218,7 +217,7 @@
 
 <main id="top">
 
-  <div class="hero dark">
+  <div class="hero">
     <div class="wrap">
       <div>
         <p class="eyebrow">Podcast clips by Austin Wu</p>
@@ -236,7 +235,7 @@
     </div>
   </div>
 
-  <section id="samples">
+  <section class="paper" id="samples">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Sample clips</p>
@@ -282,7 +281,7 @@
     </div>
   </section>
 
-  <section class="tint" id="how">
+  <section id="how">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">How it works</p>
